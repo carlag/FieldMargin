@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2150E65F1F42FCEB002EB03A /* IntrustionsHelpView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2150E65E1F42FCEB002EB03A /* IntrustionsHelpView.xib */; };
 		2150E6611F42FE81002EB03A /* ResultsPopupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2150E6601F42FE81002EB03A /* ResultsPopupViewModel.swift */; };
+		2150E6641F42FF10002EB03A /* RobotLogView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2150E6631F42FF10002EB03A /* RobotLogView.xib */; };
 		219031A61F4074F800E10632 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219031A51F4074F800E10632 /* AppDelegate.swift */; };
 		219031A81F4074F800E10632 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219031A71F4074F800E10632 /* ViewController.swift */; };
 		219031AB1F4074F800E10632 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 219031A91F4074F800E10632 /* Main.storyboard */; };
@@ -35,6 +36,7 @@
 /* Begin PBXFileReference section */
 		2150E65E1F42FCEB002EB03A /* IntrustionsHelpView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IntrustionsHelpView.xib; sourceTree = "<group>"; };
 		2150E6601F42FE81002EB03A /* ResultsPopupViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsPopupViewModel.swift; sourceTree = "<group>"; };
+		2150E6631F42FF10002EB03A /* RobotLogView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RobotLogView.xib; sourceTree = "<group>"; };
 		219031A21F4074F800E10632 /* FieldMargin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FieldMargin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		219031A51F4074F800E10632 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		219031A71F4074F800E10632 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 			children = (
 				2150E6621F42FEA9002EB03A /* Controllers */,
 				2150E65E1F42FCEB002EB03A /* IntrustionsHelpView.xib */,
+				2150E6631F42FF10002EB03A /* RobotLogView.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -235,6 +238,7 @@
 			files = (
 				219031B01F4074F800E10632 /* LaunchScreen.storyboard in Resources */,
 				2150E65F1F42FCEB002EB03A /* IntrustionsHelpView.xib in Resources */,
+				2150E6641F42FF10002EB03A /* RobotLogView.xib in Resources */,
 				219031AD1F4074F800E10632 /* Assets.xcassets in Resources */,
 				219031AB1F4074F800E10632 /* Main.storyboard in Resources */,
 			);
