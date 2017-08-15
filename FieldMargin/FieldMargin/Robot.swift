@@ -9,9 +9,9 @@
 import Foundation
 import UIKit
 
-public enum Health {
-    case ShortCircuited
-    case StillFunctioning
+public enum Health : String {
+    case ShortCircuited = "Short Circuited"
+    case StillFunctioning = "Still Functioning"
 }
 
 struct Robot {

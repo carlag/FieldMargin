@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2123BE241F4310BB003E5C7B /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2123BE231F4310BB003E5C7B /* HomeViewModel.swift */; };
+		2123BE271F4354CC003E5C7B /* RobotService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2123BE261F4354CC003E5C7B /* RobotService.swift */; };
 		2150E65F1F42FCEB002EB03A /* IntrustionsHelpView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2150E65E1F42FCEB002EB03A /* IntrustionsHelpView.xib */; };
 		2150E6611F42FE81002EB03A /* ResultsPopupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2150E6601F42FE81002EB03A /* ResultsPopupViewModel.swift */; };
 		2150E6641F42FF10002EB03A /* RobotLogView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2150E6631F42FF10002EB03A /* RobotLogView.xib */; };
@@ -36,6 +37,7 @@
 
 /* Begin PBXFileReference section */
 		2123BE231F4310BB003E5C7B /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		2123BE261F4354CC003E5C7B /* RobotService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RobotService.swift; sourceTree = "<group>"; };
 		2150E65E1F42FCEB002EB03A /* IntrustionsHelpView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IntrustionsHelpView.xib; sourceTree = "<group>"; };
 		2150E6601F42FE81002EB03A /* ResultsPopupViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsPopupViewModel.swift; sourceTree = "<group>"; };
 		2150E6631F42FF10002EB03A /* RobotLogView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RobotLogView.xib; sourceTree = "<group>"; };
@@ -74,6 +76,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2123BE251F4354BE003E5C7B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				2123BE261F4354CC003E5C7B /* RobotService.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
 		2150E6621F42FEA9002EB03A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +113,7 @@
 		219031A41F4074F800E10632 /* FieldMargin */ = {
 			isa = PBXGroup;
 			children = (
+				2123BE251F4354BE003E5C7B /* Helpers */,
 				219031D51F407B5800E10632 /* ViewModel */,
 				219031D01F40791200E10632 /* Views */,
 				219031C91F4075F500E10632 /* Model */,
@@ -262,6 +273,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				219031CF1F40775200E10632 /* Instruction.swift in Sources */,
+				2123BE271F4354CC003E5C7B /* RobotService.swift in Sources */,
 				219031A81F4074F800E10632 /* ViewController.swift in Sources */,
 				219031CD1F40764800E10632 /* Belt.swift in Sources */,
 				2123BE241F4310BB003E5C7B /* HomeViewModel.swift in Sources */,

@@ -8,11 +8,11 @@
 
 import Foundation
 
-public enum Instruction {
-    case P
-    case D
-    case N
-    case S
-    case E
-    case W
+public enum Instruction : Character {
+    case Pickup = "P"
+    case Drop = "D"
+    case North = "N"
+    case South = "S"
+    case East = "E"
+    case West = "W"
 }

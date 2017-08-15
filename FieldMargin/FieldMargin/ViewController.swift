@@ -31,7 +31,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Setup View
-        self.viewModel = HomeViewModel()
+        
+        let reloadCallback : () -> () = { [weak self] in
+            self?.reload()
+        }
+        
+        self.viewModel = HomeViewModel(reloadCallback: reloadCallback)
         
         setupView()
     }
@@ -45,14 +50,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func submitButtonTapped(_ sender: Any) {
-        // Validate Text Field
-        let validInstructions = validate(self.listOfInstructions)
-        let validCrates = validate(self.listOfCrates)
-        
-        if validInstructions && validCrates {
-            //update
-        }
-        
+        processData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -80,7 +78,7 @@ extension ViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         findNextResponder(textField: textField)
         return true
-
+        
     }
     
     // MARK: - Helper Methods
@@ -129,11 +127,38 @@ extension ViewController: UITextFieldDelegate {
             break
         }
         
-
+        
         return true
     }
     
+    func validateAllFields() -> Bool {
+        for case let textField as UITextField in self.view.subviews {
+            if !validate(textField) {
+                return false
+            }
+        }
+        
+        return true
+    }
+    
+    func processData() {
+        
+        if validateAllFields() {
+            self.viewModel!.processFormData(robotCoord_x: self.robotStartCoordinates_x.text!,
+                                 robotCoord_y: self.robotStartCoordinates_y.text!,
+                                 beltCoord_x: self.beltCoordinates_x.text!,
+                                 beltCoord_y: self.beltCoordinates_y.text!,
+                                 crates: self.listOfCrates.text!,
+                                 instructions: self.listOfInstructions.text!)
 
+        }
+    }
+    
+    func reload() {
+        self.finalHealthStatus.text = self.viewModel?.finalHealthStatus
+        self.finalBagCount.text = self.viewModel?.finalBagCount
+        self.finalRobotPosition.text = self.viewModel?.finalRobotPosition
+    }
     
     
 }

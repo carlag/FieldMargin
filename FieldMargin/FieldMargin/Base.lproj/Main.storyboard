@@ -7,7 +7,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -118,22 +117,22 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5QD-sr-lQd">
                                 <rect key="frame" x="26" y="373" width="268" height="71"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="38U-51-Evh">
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="38U-51-Evh">
                                         <rect key="frame" x="0.0" y="0.0" width="178.5" height="71"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Robot Position:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jtb-SH-wQg">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Robot Position:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jtb-SH-wQg">
                                                 <rect key="frame" x="5" y="5" width="168.5" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Robot Health" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qm3-Mv-hhc">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Robot Health" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qm3-Mv-hhc">
                                                 <rect key="frame" x="5" y="27" width="169" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bags on Conveyer:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BtM-M7-pvP">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Bags on Conveyer:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BtM-M7-pvP">
                                                 <rect key="frame" x="5" y="49" width="168.5" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <nil key="textColor"/>
@@ -146,6 +145,7 @@
                                             <constraint firstItem="BtM-M7-pvP" firstAttribute="leading" secondItem="38U-51-Evh" secondAttribute="leading" constant="5" id="8H1-D1-76k"/>
                                             <constraint firstAttribute="bottom" secondItem="BtM-M7-pvP" secondAttribute="bottom" constant="5" id="EGL-IR-8Y8"/>
                                             <constraint firstItem="Qm3-Mv-hhc" firstAttribute="top" secondItem="Jtb-SH-wQg" secondAttribute="bottom" constant="5" id="M9Y-O6-KPs"/>
+                                            <constraint firstAttribute="trailing" secondItem="BtM-M7-pvP" secondAttribute="trailing" constant="5" id="XRE-iF-G5z"/>
                                             <constraint firstItem="BtM-M7-pvP" firstAttribute="top" secondItem="Qm3-Mv-hhc" secondAttribute="bottom" constant="5" id="ZKr-MF-4fy"/>
                                             <constraint firstItem="Jtb-SH-wQg" firstAttribute="top" secondItem="38U-51-Evh" secondAttribute="top" constant="5" id="bbz-mh-s3e"/>
                                             <constraint firstItem="Qm3-Mv-hhc" firstAttribute="leading" secondItem="38U-51-Evh" secondAttribute="leading" constant="5" id="gGo-NL-Mjg"/>
@@ -154,22 +154,22 @@
                                             <constraint firstAttribute="trailing" secondItem="BtM-M7-pvP" secondAttribute="trailing" constant="5" id="xhP-UW-zPq"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kgx-Vz-VBv">
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kgx-Vz-VBv">
                                         <rect key="frame" x="178.5" y="0.0" width="89.5" height="71"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BVb-g8-5N7">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BVb-g8-5N7">
                                                 <rect key="frame" x="15" y="5" width="64.5" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9zP-RF-kxF">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9zP-RF-kxF">
                                                 <rect key="frame" x="15" y="27" width="64.5" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N1f-6U-FGH">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N1f-6U-FGH">
                                                 <rect key="frame" x="15" y="49" width="64.5" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <nil key="textColor"/>
@@ -192,7 +192,6 @@
                                     <constraint firstItem="N1f-6U-FGH" firstAttribute="top" secondItem="BtM-M7-pvP" secondAttribute="top" id="83d-I4-gLi"/>
                                     <constraint firstItem="BVb-g8-5N7" firstAttribute="top" secondItem="Jtb-SH-wQg" secondAttribute="top" id="8ee-cR-nnY"/>
                                     <constraint firstItem="kgx-Vz-VBv" firstAttribute="leading" secondItem="38U-51-Evh" secondAttribute="trailing" id="HVV-Pr-Ixu"/>
-                                    <constraint firstItem="38U-51-Evh" firstAttribute="width" secondItem="kgx-Vz-VBv" secondAttribute="width" multiplier="2:1" id="Lto-f8-NLs"/>
                                     <constraint firstItem="9zP-RF-kxF" firstAttribute="top" secondItem="Qm3-Mv-hhc" secondAttribute="top" id="QHU-1K-tw8"/>
                                     <constraint firstItem="kgx-Vz-VBv" firstAttribute="top" secondItem="5QD-sr-lQd" secondAttribute="top" id="cXo-A3-3wX"/>
                                     <constraint firstItem="38U-51-Evh" firstAttribute="top" secondItem="5QD-sr-lQd" secondAttribute="top" id="hKz-66-Vgz"/>
