@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2123BE241F4310BB003E5C7B /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2123BE231F4310BB003E5C7B /* HomeViewModel.swift */; };
 		2150E65F1F42FCEB002EB03A /* IntrustionsHelpView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2150E65E1F42FCEB002EB03A /* IntrustionsHelpView.xib */; };
 		2150E6611F42FE81002EB03A /* ResultsPopupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2150E6601F42FE81002EB03A /* ResultsPopupViewModel.swift */; };
 		2150E6641F42FF10002EB03A /* RobotLogView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2150E6631F42FF10002EB03A /* RobotLogView.xib */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2123BE231F4310BB003E5C7B /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		2150E65E1F42FCEB002EB03A /* IntrustionsHelpView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IntrustionsHelpView.xib; sourceTree = "<group>"; };
 		2150E6601F42FE81002EB03A /* ResultsPopupViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsPopupViewModel.swift; sourceTree = "<group>"; };
 		2150E6631F42FF10002EB03A /* RobotLogView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RobotLogView.xib; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				2150E6601F42FE81002EB03A /* ResultsPopupViewModel.swift */,
+				2123BE231F4310BB003E5C7B /* HomeViewModel.swift */,
 			);
 			name = ViewModel;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 				219031CF1F40775200E10632 /* Instruction.swift in Sources */,
 				219031A81F4074F800E10632 /* ViewController.swift in Sources */,
 				219031CD1F40764800E10632 /* Belt.swift in Sources */,
+				2123BE241F4310BB003E5C7B /* HomeViewModel.swift in Sources */,
 				2150E6611F42FE81002EB03A /* ResultsPopupViewModel.swift in Sources */,
 				219031CB1F40761C00E10632 /* Robot.swift in Sources */,
 				219031C81F4075E700E10632 /* Crate.swift in Sources */,
