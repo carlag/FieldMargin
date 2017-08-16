@@ -16,14 +16,14 @@ protocol RobotServiceProtocol {
 }
 
 
-struct RobotService : RobotServiceProtocol {
+class RobotService : RobotServiceProtocol {
     var logger: [String] = []
     var robot : Robot?
     var belt : Belt?
     var crates: [Crate] = []
     var commands : [Instruction] = []
     
-    mutating func startRobot() -> FinalState {
+    func startRobot() -> FinalState {
         self.setupLogger()
         while (self.robot?.health != .ShortCircuited && self.commands.count > 0) {
             let nextCommand = self.commands.remove(at: 0)
@@ -34,7 +34,7 @@ struct RobotService : RobotServiceProtocol {
         return (self.robot!.health.rawValue, String(self.belt!.bagCount), finalPosition)
     }
     
-    mutating func processCommand(command: Instruction) {
+    func processCommand(command: Instruction) {
         switch command {
         case Instruction.Drop:
             dropABag()
@@ -47,7 +47,7 @@ struct RobotService : RobotServiceProtocol {
         }
     }
     
-    mutating func dropABag() {
+    func dropABag() {
         logger.append("D: DROP BAG")
         
         guard robot != nil else {return}
@@ -71,7 +71,7 @@ struct RobotService : RobotServiceProtocol {
         }
     }
     
-    mutating func pickupABag() {
+    func pickupABag() {
         logger.append("P: PICK UP BAG")
         
         guard robot != nil else {return}
@@ -95,7 +95,7 @@ struct RobotService : RobotServiceProtocol {
         }
     }
     
-    mutating func move(direction: Instruction) {
+    func move(direction: Instruction) {
         guard robot != nil else {return}
         
         var x_pos = robot!.position.x
@@ -126,7 +126,7 @@ struct RobotService : RobotServiceProtocol {
         robot!.position = pos
     }
     
-   mutating func setupLogger() {
+   func setupLogger() {
         self.logger = []
         logger.append("-----Setup-----")
         logger.append("Robot start: \(self.robot!.position)")

@@ -13,6 +13,7 @@ protocol HomeViewModelProtocol {
     mutating func processFormData(robotCoord_x: String, robotCoord_y: String, beltCoord_x: String, beltCoord_y: String, crates: String, instructions: String)
     func validateText(type: ValidationType, textToValidate: [String?]) -> (Bool, String?)
     func stringContainsAllowedLetters(type: ValidationType, string: String) -> Bool
+    func nextViewModel() -> LogViewModel
 }
 
 struct HomeViewModel : HomeViewModelProtocol {
@@ -76,7 +77,7 @@ struct HomeViewModel : HomeViewModelProtocol {
 //MARK: Formating input
 extension HomeViewModel {
     
-    func makeCrates(input: String) -> [Crate] {
+    fileprivate func makeCrates(input: String) -> [Crate] {
         let input = input.trimmingCharacters(in: .whitespaces)
         let cratesAsStrings = input.components(separatedBy: "),")
         
@@ -90,7 +91,7 @@ extension HomeViewModel {
         return crates
     }
     
-    func makeInstructions(input: String) -> [Instruction] {
+    fileprivate func makeInstructions(input: String) -> [Instruction] {
         let instructions : [Instruction] = input.characters.map {
             return Instruction(rawValue: $0)!
         }
