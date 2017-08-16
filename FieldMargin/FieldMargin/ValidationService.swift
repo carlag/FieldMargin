@@ -77,9 +77,7 @@ struct ValidationService {
         let filtered = compSepByCharInSet.joined(separator: "")
         
         let containsDisallowedLetters = string == filtered
-        print("String: \(string)")
-        print(containsDisallowedLetters)
-        print("")
+
         return containsDisallowedLetters
     }
     

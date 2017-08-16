@@ -23,7 +23,7 @@ struct TestInput {
             Crate(position: CGPoint(x:0,y:-2), quantity: 1),
             ]
         
-        let instructions : [Instruction] = [.W, .P, .S, .P, .S, .S, .E, .D]
+        let instructions : [Instruction] = [.West, .Pickup, .South, .Pickup, .South, .South, .East, .Drop]
     }
     
     struct NoCrateAtPosition {
@@ -44,7 +44,7 @@ struct TestInput {
         let belt = Belt(position: CGPoint(x:1, y:1))
 
         
-        let instructions : [Instruction] = [.D]
+        let instructions : [Instruction] = [.Drop]
     }
     
     

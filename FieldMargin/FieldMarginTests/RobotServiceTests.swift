@@ -12,10 +12,11 @@ import XCTest
 class RobotServiceTests: XCTestCase {
     
     let input = TestInput()
-    var viewModel : RobotService?
+    var robotService : RobotService?
     
     override func setUp() {
         super.setUp()
+        self.robotService = RobotService()
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
     
@@ -36,62 +37,75 @@ class RobotServiceTests: XCTestCase {
     }
     
     func testMoveCommands() {
-        self.viewModel = RobotService(robot: TestInput.AllGood().robot, belt: TestInput.AllGood().belt, crates: TestInput.AllGood().crates, instructions: TestInput.AllGood().instructions)
-        self.viewModel?.startRobot()
+        self.robotService?.robot = TestInput.AllGood().robot
+        self.robotService?.belt = TestInput.AllGood().belt
+        self.robotService?.crates = TestInput.AllGood().crates
+        self.robotService?.commands = TestInput.AllGood().instructions
+
         
-        let health = self.viewModel?.robot?.health
-        let position = self.viewModel?.robot?.position
-        let beltBags = self.viewModel?.belt?.bagCount
+        self.robotService?.startRobot()
+        
+        let health = self.robotService?.robot?.health
+        let position = self.robotService?.robot?.position
+        let beltBags = self.robotService?.belt?.bagCount
 
         assert(health == Health.StillFunctioning)
         assert(position == CGPoint(x: 1, y:-3))
-        assert(beltBags == 2)
+        assert(beltBags == 1)
     }
     
     
     func testRobotDropsBagAtPositionOtherThanBelt() {
-        viewModel = RobotService(robot: Robot(position:CGPoint(x:0, y:0)),
-                                          belt: Belt(position: CGPoint(x:1, y:1)),
-                                          crates: [Crate(position:CGPoint(x:0, y:0), quantity: 2)],
-                                          instructions: [.D])
-        self.viewModel?.robot?.bagCount = 1
-        self.viewModel?.startRobot()
+        self.robotService?.robot = Robot(position:CGPoint(x:0, y:0))
+        self.robotService?.belt = Belt(position: CGPoint(x:1, y:1))
+        self.robotService?.crates = [Crate(position:CGPoint(x:0, y:0), quantity: 2)]
+        self.robotService?.commands = [.Drop]
+     
+        self.robotService?.robot?.bagCount = 1
+        self.robotService?.startRobot()
         
-        let health = self.viewModel?.robot?.health
+        let health = self.robotService?.robot?.health
         
         assert(health == Health.ShortCircuited)
     }
     
     
     func testNoCrateAtPosition() {
-        viewModel = RobotService(robot: Robot(position:CGPoint(x:0, y:0)),
-                                          belt: Belt(position: CGPoint(x:1, y:0)),
-                                          crates: [Crate(position:CGPoint(x:1,y:1), quantity: 0)],
-                                          instructions: [.P])
-        self.viewModel?.startRobot()
+        self.robotService?.robot = Robot(position:CGPoint(x:0, y:0))
+        self.robotService?.belt = Belt(position: CGPoint(x:1, y:0))
+        self.robotService?.crates = [Crate(position:CGPoint(x:1, y:1), quantity: 0)]
+        self.robotService?.commands = [.Pickup]
+
+        self.robotService?.startRobot()
         
-        let health = self.viewModel?.robot?.health
+        let health = self.robotService?.robot?.health
         
         assert(health == Health.ShortCircuited)
     }
     
     func testEmptyCrates() {
-        viewModel = RobotService(robot: Robot(position:CGPoint(x:0, y:0)),
-                                          belt: Belt(position: CGPoint(x:1, y:0)),
-                                          crates: [Crate(position:CGPoint(x:0,y:0), quantity: 0)],
-                                          instructions: [.P, .E, .D])
-        self.viewModel?.startRobot()
         
-        let health = self.viewModel?.robot?.health
+        self.robotService?.robot = Robot(position:CGPoint(x:0, y:0))
+        self.robotService?.belt = Belt(position: CGPoint(x:1, y:0))
+        self.robotService?.crates = [Crate(position:CGPoint(x:0, y:0), quantity: 0)]
+        self.robotService?.commands = [.Pickup, .East, .Drop]
+
+        self.robotService?.startRobot()
+        
+        let health = self.robotService?.robot?.health
         
         assert(health == Health.StillFunctioning)
     }
     
     func testRobotHasNoBagsToDrop() {
-        viewModel = RobotService(robot: TestInput.RobotHasNoBagsToDrop().robot, belt: TestInput.RobotHasNoBagsToDrop().belt, crates: [], instructions: TestInput.RobotHasNoBagsToDrop().instructions)
-        self.viewModel?.startRobot()
+        self.robotService?.robot =  TestInput.RobotHasNoBagsToDrop().robot
+        self.robotService?.belt = TestInput.RobotHasNoBagsToDrop().belt
+        self.robotService?.crates = []
+        self.robotService?.commands =  TestInput.RobotHasNoBagsToDrop().instructions
+
+        self.robotService?.startRobot()
         
-        let health = self.viewModel?.robot?.health
+        let health = self.robotService?.robot?.health
 
         assert(health == Health.StillFunctioning)
         
