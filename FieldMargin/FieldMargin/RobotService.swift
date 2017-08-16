@@ -52,11 +52,8 @@ struct RobotService : RobotServiceProtocol {
         case Instruction.Pickup:
             pickupABag()
             break
-        case Instruction.North, Instruction.South, Instruction.East, Instruction.West:
-            move(direction: command)
-            break
         default:
-            break
+            move(direction: command)
         }
     }
     

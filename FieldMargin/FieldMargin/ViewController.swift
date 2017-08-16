@@ -74,6 +74,9 @@ extension ViewController {
     }
     
     @IBAction func submitButtonTapped(_ sender: Any) {
+        self.keyboarDismissed = true
+        view.endEditing(true)
+
         processData()
     }
     
