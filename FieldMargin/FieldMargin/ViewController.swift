@@ -23,6 +23,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var finalBagCount: UILabel!
     @IBOutlet weak var finalRobotPosition: UILabel!
     var viewModel : HomeViewModel?
+    var keyboarDismissed = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,14 +102,13 @@ extension ViewController {
 extension ViewController: UITextFieldDelegate {
     
     func dismissKeyboard() {
+        self.keyboarDismissed = true
         view.endEditing(true)
-        
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         findNextResponder(textField: textField)
         return true
-        
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -126,9 +126,9 @@ extension ViewController: UITextFieldDelegate {
         return false
     }
     
-    //    func textFieldDidEndEditing(_ textField: UITextField) {
-    //        findNextResponder(textField: textField)
-    //    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        findNextResponder(textField: textField)
+    }
     
     // MARK:  Validation Helper Methods
     func validateAllFields() -> Bool {
@@ -173,21 +173,30 @@ extension ViewController: UITextFieldDelegate {
     }
     
     fileprivate func findNextResponder(textField: UITextField) {
-        if(validate(textField)) {
-            switch textField {
-            case beltCoordinates_x:
-                beltCoordinates_y.becomeFirstResponder()
-            case beltCoordinates_y:
-                robotStartCoordinates_x.becomeFirstResponder()
-            case robotStartCoordinates_x:
-                robotStartCoordinates_y.becomeFirstResponder()
-            case robotStartCoordinates_y:
-                listOfCrates.becomeFirstResponder()
-            case listOfCrates:
-                listOfInstructions.becomeFirstResponder()
-            default:
-                beltCoordinates_x.resignFirstResponder()
-            }
+        if (self.keyboarDismissed) {
+            self.keyboarDismissed = false
+            return
         }
-    }    
+        
+        switch textField {
+        case beltCoordinates_x:
+            beltCoordinates_y.becomeFirstResponder()
+        case beltCoordinates_y:
+            robotStartCoordinates_x.becomeFirstResponder()
+        case robotStartCoordinates_x:
+            robotStartCoordinates_y.becomeFirstResponder()
+        case robotStartCoordinates_y:
+            listOfCrates.becomeFirstResponder()
+        case listOfCrates:
+            if(validate(textField)) {
+                listOfInstructions.becomeFirstResponder()
+            }
+        case listOfInstructions:
+            if (validate(textField)) {
+                view.endEditing(true)
+            }
+        default:
+            view.endEditing(true)
+        }
+    }
 }
