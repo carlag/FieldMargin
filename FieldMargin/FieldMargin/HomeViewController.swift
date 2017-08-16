@@ -23,7 +23,6 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var finalBagCount: UILabel!
     @IBOutlet weak var finalRobotPosition: UILabel!
     var viewModel : HomeViewModel?
-    var keyboarDismissed = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,9 +65,8 @@ extension HomeViewController {
     }
     
     @IBAction func submitButtonTapped(_ sender: Any) {
-        self.keyboarDismissed = true
         view.endEditing(true)
-
+        
         processData()
     }
     
@@ -97,7 +95,6 @@ extension HomeViewController {
 extension HomeViewController: UITextFieldDelegate {
     
     func dismissKeyboard() {
-        self.keyboarDismissed = true
         view.endEditing(true)
     }
     
@@ -168,11 +165,7 @@ extension HomeViewController: UITextFieldDelegate {
     }
     
     fileprivate func findNextResponder(textField: UITextField) {
-        if (self.keyboarDismissed) {
-            self.keyboarDismissed = false
-            return
-        }
-        
+        let valid = validate(textField)
         switch textField {
         case beltCoordinates_x:
             beltCoordinates_y.becomeFirstResponder()
@@ -183,13 +176,9 @@ extension HomeViewController: UITextFieldDelegate {
         case robotStartCoordinates_y:
             listOfCrates.becomeFirstResponder()
         case listOfCrates:
-            if(validate(textField)) {
-                listOfInstructions.becomeFirstResponder()
-            }
+            if (valid) {listOfInstructions.becomeFirstResponder()}
         case listOfInstructions:
-            if (validate(textField)) {
-                view.endEditing(true)
-            }
+            if (valid) { view.endEditing(true) }
         default:
             view.endEditing(true)
         }
