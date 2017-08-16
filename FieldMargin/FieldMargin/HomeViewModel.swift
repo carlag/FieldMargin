@@ -35,7 +35,7 @@ struct HomeViewModel : HomeViewModelProtocol {
     mutating func processFormData(robotCoord_x: String, robotCoord_y: String, beltCoord_x: String, beltCoord_y: String, crates: String, instructions: String)
     {
         let robot = Robot(position: CGPoint(x: Int(robotCoord_x)!, y: Int(robotCoord_y)!))
-        let belt = Belt(position: CGPoint(x: Int(robotCoord_x)!, y: Int(robotCoord_y)!))
+        let belt = Belt(position: CGPoint(x: Int(beltCoord_x)!, y: Int(beltCoord_y)!))
 
         let crateList = makeCrates(input: crates)
         let instructionsList = makeInstructions(input: instructions)
@@ -61,7 +61,7 @@ extension HomeViewModel {
             return (false, "This field cannot be empty.")
         }
         
-        let characterset = CharacterSet(charactersIn: "-0123456789,()")
+        let characterset = CharacterSet(charactersIn: "-0123456789,() ")
         if text!.rangeOfCharacter(from: characterset.inverted) != nil {
             return (false, "String contains unexpected characters")
         }
@@ -71,7 +71,7 @@ extension HomeViewModel {
         for var crateString in cratesAsStrings {
             crateString = crateString.replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: "")
             let crateParts = crateString.components(separatedBy: ",")
-            if (crateParts.count != 3) {
+            if (crateParts.count != 3 || crateParts[0] == "" || crateParts[1] == "" || crateParts[2] == "") {
                 return (false, "Unexpected input")
             }
         }
