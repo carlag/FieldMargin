@@ -9,10 +9,9 @@
 /* Begin PBXBuildFile section */
 		2123BE241F4310BB003E5C7B /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2123BE231F4310BB003E5C7B /* HomeViewModel.swift */; };
 		2123BE271F4354CC003E5C7B /* RobotService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2123BE261F4354CC003E5C7B /* RobotService.swift */; };
-		2150E65F1F42FCEB002EB03A /* IntrustionsHelpView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2150E65E1F42FCEB002EB03A /* IntrustionsHelpView.xib */; };
 		2150E6611F42FE81002EB03A /* LogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2150E6601F42FE81002EB03A /* LogViewModel.swift */; };
 		219031A61F4074F800E10632 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219031A51F4074F800E10632 /* AppDelegate.swift */; };
-		219031A81F4074F800E10632 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219031A71F4074F800E10632 /* ViewController.swift */; };
+		219031A81F4074F800E10632 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219031A71F4074F800E10632 /* HomeViewController.swift */; };
 		219031AB1F4074F800E10632 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 219031A91F4074F800E10632 /* Main.storyboard */; };
 		219031AD1F4074F800E10632 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 219031AC1F4074F800E10632 /* Assets.xcassets */; };
 		219031B01F4074F800E10632 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 219031AE1F4074F800E10632 /* LaunchScreen.storyboard */; };
@@ -42,11 +41,10 @@
 /* Begin PBXFileReference section */
 		2123BE231F4310BB003E5C7B /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		2123BE261F4354CC003E5C7B /* RobotService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RobotService.swift; sourceTree = "<group>"; };
-		2150E65E1F42FCEB002EB03A /* IntrustionsHelpView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IntrustionsHelpView.xib; sourceTree = "<group>"; };
 		2150E6601F42FE81002EB03A /* LogViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogViewModel.swift; sourceTree = "<group>"; };
 		219031A21F4074F800E10632 /* FieldMargin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FieldMargin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		219031A51F4074F800E10632 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		219031A71F4074F800E10632 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		219031A71F4074F800E10632 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		219031AA1F4074F800E10632 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		219031AC1F4074F800E10632 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		219031AF1F4074F800E10632 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -96,7 +94,7 @@
 		2150E6621F42FEA9002EB03A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				219031A71F4074F800E10632 /* ViewController.swift */,
+				219031A71F4074F800E10632 /* HomeViewController.swift */,
 				21D4D3EF1F4390C80056CB81 /* LoggerViewController.swift */,
 			);
 			name = Controllers;
@@ -163,7 +161,6 @@
 			isa = PBXGroup;
 			children = (
 				2150E6621F42FEA9002EB03A /* Controllers */,
-				2150E65E1F42FCEB002EB03A /* IntrustionsHelpView.xib */,
 				21D4D3F31F4391DF0056CB81 /* LoggerViewController.xib */,
 			);
 			name = Views;
@@ -265,7 +262,6 @@
 				21D4D3F21F4390DA0056CB81 /* LoggerViewController.xib in Resources */,
 				219031B01F4074F800E10632 /* LaunchScreen.storyboard in Resources */,
 				21D4D3F41F4391DF0056CB81 /* LoggerViewController.xib in Resources */,
-				2150E65F1F42FCEB002EB03A /* IntrustionsHelpView.xib in Resources */,
 				219031AD1F4074F800E10632 /* Assets.xcassets in Resources */,
 				219031AB1F4074F800E10632 /* Main.storyboard in Resources */,
 			);
@@ -288,7 +284,7 @@
 				219031CF1F40775200E10632 /* Instruction.swift in Sources */,
 				2123BE271F4354CC003E5C7B /* RobotService.swift in Sources */,
 				21D4D3F01F4390C80056CB81 /* LoggerViewController.swift in Sources */,
-				219031A81F4074F800E10632 /* ViewController.swift in Sources */,
+				219031A81F4074F800E10632 /* HomeViewController.swift in Sources */,
 				219031CD1F40764800E10632 /* Belt.swift in Sources */,
 				2123BE241F4310BB003E5C7B /* HomeViewModel.swift in Sources */,
 				2150E6611F42FE81002EB03A /* LogViewModel.swift in Sources */,

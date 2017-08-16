@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class HomeViewController: UIViewController {
     @IBOutlet weak var beltCoordinates_x: UITextField!
     @IBOutlet weak var beltCoordinates_y: UITextField!
     @IBOutlet weak var beltCoordinatesValidation: UILabel!
@@ -39,7 +39,7 @@ class ViewController: UIViewController {
         robotStartCoordinatesValidation.isHidden = true
         beltCoordinatesValidation.isHidden = true
         self.listOfInstructions.autocapitalizationType = .allCharacters
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.dismissKeyboard))
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(HomeViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
         
     }
@@ -60,7 +60,7 @@ class ViewController: UIViewController {
 
 
 //MARK:-  Actions
-extension ViewController {
+extension HomeViewController {
     @IBAction func viewLogButtonTapped(_ sender: Any) {
         self.showModal()
     }
@@ -94,7 +94,7 @@ extension ViewController {
 }
 
 //MARK: - Text Field Delegate Methods
-extension ViewController: UITextFieldDelegate {
+extension HomeViewController: UITextFieldDelegate {
     
     func dismissKeyboard() {
         self.keyboarDismissed = true
