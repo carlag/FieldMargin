@@ -22,7 +22,6 @@
 		219031CD1F40764800E10632 /* Belt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219031CC1F40764800E10632 /* Belt.swift */; };
 		219031CF1F40775200E10632 /* Instruction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219031CE1F40775200E10632 /* Instruction.swift */; };
 		21D4D3F01F4390C80056CB81 /* LoggerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D4D3EF1F4390C80056CB81 /* LoggerViewController.swift */; };
-		21D4D3F21F4390DA0056CB81 /* LoggerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21D4D3F11F4390DA0056CB81 /* LoggerViewController.xib */; };
 		21D4D3F41F4391DF0056CB81 /* LoggerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21D4D3F31F4391DF0056CB81 /* LoggerViewController.xib */; };
 		21D4D3F61F4429220056CB81 /* ValidationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D4D3F51F4429220056CB81 /* ValidationService.swift */; };
 		21D4D3F81F44352D0056CB81 /* ValidationServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D4D3F71F44352D0056CB81 /* ValidationServiceTests.swift */; };
@@ -58,7 +57,6 @@
 		219031CC1F40764800E10632 /* Belt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Belt.swift; sourceTree = "<group>"; };
 		219031CE1F40775200E10632 /* Instruction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Instruction.swift; sourceTree = "<group>"; };
 		21D4D3EF1F4390C80056CB81 /* LoggerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggerViewController.swift; sourceTree = "<group>"; };
-		21D4D3F11F4390DA0056CB81 /* LoggerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoggerViewController.xib; sourceTree = "<group>"; };
 		21D4D3F31F4391DF0056CB81 /* LoggerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoggerViewController.xib; sourceTree = "<group>"; };
 		21D4D3F51F4429220056CB81 /* ValidationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationService.swift; sourceTree = "<group>"; };
 		21D4D3F71F44352D0056CB81 /* ValidationServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationServiceTests.swift; sourceTree = "<group>"; };
@@ -103,7 +101,6 @@
 		219031991F4074F800E10632 = {
 			isa = PBXGroup;
 			children = (
-				21D4D3F11F4390DA0056CB81 /* LoggerViewController.xib */,
 				219031A41F4074F800E10632 /* FieldMargin */,
 				219031B91F4074F800E10632 /* FieldMarginTests */,
 				219031A31F4074F800E10632 /* Products */,
@@ -259,7 +256,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				21D4D3F21F4390DA0056CB81 /* LoggerViewController.xib in Resources */,
 				219031B01F4074F800E10632 /* LaunchScreen.storyboard in Resources */,
 				21D4D3F41F4391DF0056CB81 /* LoggerViewController.xib in Resources */,
 				219031AD1F4074F800E10632 /* Assets.xcassets in Resources */,

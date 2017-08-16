@@ -17,24 +17,23 @@ protocol HomeViewModelProtocol {
 }
 
 struct HomeViewModel : HomeViewModelProtocol {
-
+    //MARK: Properties
     var robotService : RobotService?
     var validationService : ValidationService?
-    
     var reload : (()->())?
-    
     var finalState : FinalState?
     var finalHealthStatus : String { get { return finalState!.0 }}
     var finalBagCount : String { get { return finalState!.1 }}
     var finalRobotPosition: String { get { return finalState!.2 }}
     
+    //MARK: Setup
     init(reloadCallback: @escaping (()->())) {
         self.reload = reloadCallback
         self.robotService = RobotService()
         self.validationService = ValidationService()
     }
     
-    
+    //MARK: Public
     mutating func processFormData(robotCoord_x: String, robotCoord_y: String, beltCoord_x: String, beltCoord_y: String, crates: String, instructions: String)
     {
         let robot = Robot(position: CGPoint(x: Int(robotCoord_x)!, y: Int(robotCoord_y)!))
@@ -54,12 +53,16 @@ struct HomeViewModel : HomeViewModelProtocol {
         self.reload!()
     }
     
-    
     func nextViewModel() -> LogViewModel {
         let logViewModel = LogViewModel(logger: self.robotService!.logger)
         return logViewModel
     }
     
+
+}
+
+//MARK: Validation
+extension HomeViewModel {
     func validateText(type: ValidationType, textToValidate: [String?]) -> (Bool, String?) {
         guard self.validationService != nil else {return (true, nil)}
         
@@ -72,7 +75,6 @@ struct HomeViewModel : HomeViewModelProtocol {
         return self.validationService!.stringContainsAllowedLetters(type: type, string: string)
     }
 }
-
 
 //MARK: Formating input
 extension HomeViewModel {

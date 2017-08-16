@@ -39,6 +39,7 @@ struct ValidationService {
     }
     
     
+    //MARK: Crates
     func validateCrates(text: String) -> (Bool, String?) {
         let text = text.trimmingCharacters(in: .whitespaces)
         
@@ -55,11 +56,13 @@ struct ValidationService {
     }
     
     
+    //MARK: Instructions
     func validateInstructions(text: String) -> (Bool, String?) {
         let text = text.trimmingCharacters(in: .whitespaces)
         return (text.characters.count > 0, "This field cannot be empty.")
     }
     
+    //MARK: Coordinates
     func validateCoordinates(text_x: String, text_y: String) -> (Bool, String?) {
         let chars_x : Int = text_x.characters.count
         let chars_y : Int = text_y.characters.count
@@ -67,6 +70,9 @@ struct ValidationService {
         return (chars_x > 0 && chars_y > 0, "This field cannot be empty.")
     }
     
+    
+    
+    //MARK: - Helpers
     func stringContainsAllowedLetters(type: ValidationType, string: String) -> Bool{
         let allowedLetters = type.rawValue
         

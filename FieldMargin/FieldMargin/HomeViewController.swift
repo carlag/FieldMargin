@@ -9,6 +9,8 @@
 import UIKit
 
 class HomeViewController: UIViewController {
+    //MARK: Properties
+
     @IBOutlet weak var beltCoordinates_x: UITextField!
     @IBOutlet weak var beltCoordinates_y: UITextField!
     @IBOutlet weak var beltCoordinatesValidation: UILabel!
@@ -24,6 +26,8 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var finalRobotPosition: UILabel!
     var viewModel : HomeViewModel?
     
+    // MARK: - View Methods
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViewModel()
@@ -31,7 +35,6 @@ class HomeViewController: UIViewController {
     }
     
     
-    // MARK: - View Methods
     fileprivate func setupView() {
         listOfCratesValidation.isHidden = true
         listOfInstructionsValidation.isHidden = true
@@ -122,47 +125,6 @@ extension HomeViewController: UITextFieldDelegate {
         findNextResponder(textField: textField)
     }
     
-    // MARK:  Validation Helper Methods
-    func validateAllFields() -> Bool {
-        var valid = true
-        for case let textField as UITextField in self.view.subviews {
-            if !validate(textField) {
-                valid = false
-            }
-        }
-        
-        return valid
-    }
-    
-    func updateValidationLabel(_ label: UILabel, text: String?, isHidden: Bool) {
-        label.text = text
-        UIView.animate(withDuration: 0.25, animations: {
-            label.isHidden = isHidden
-        })
-    }
-    
-    fileprivate func validate(_ textField: UITextField) -> Bool {
-        let text = textField.text
-        var (valid, message) : (Bool, String?) = (true, nil)
-        switch textField {
-        case listOfInstructions:
-            (valid, message) = self.viewModel!.validateText(type: .instruction, textToValidate: [text])
-            self.updateValidationLabel(listOfInstructionsValidation, text: message, isHidden: valid)
-        case listOfCrates:
-            (valid, message) = self.viewModel!.validateText(type: .crate, textToValidate: [text])
-            self.updateValidationLabel(listOfCratesValidation, text: message, isHidden: valid)
-        case robotStartCoordinates_x, robotStartCoordinates_y:
-            (valid, message) = self.viewModel!.validateText(type: .coordinate, textToValidate: [robotStartCoordinates_x.text, robotStartCoordinates_y.text])
-            updateValidationLabel(robotStartCoordinatesValidation, text: message, isHidden: valid)
-        case beltCoordinates_x, beltCoordinates_y:
-            (valid, message) = self.viewModel!.validateText(type: .coordinate, textToValidate: [beltCoordinates_x.text, beltCoordinates_y.text])
-            self.updateValidationLabel(beltCoordinatesValidation, text: message, isHidden: valid)
-        default:
-            break
-        }
-        
-        return valid
-    }
     
     fileprivate func findNextResponder(textField: UITextField) {
         let valid = validate(textField)
@@ -183,4 +145,57 @@ extension HomeViewController: UITextFieldDelegate {
             view.endEditing(true)
         }
     }
+}
+
+// MARK:  Validation Helper Methods
+extension HomeViewController {
+    func validateAllFields() -> Bool {
+        var valid = true
+        for case let textField as UITextField in self.view.subviews {
+            if !validate(textField) {
+                valid = false
+            }
+        }
+        
+        return valid
+    }
+    
+    func updateValidationLabel(_ label: UILabel, textField: UITextField, validationMessage: String?, isValid: Bool) {
+        label.text = validationMessage
+        UIView.animate(withDuration: 0.25, animations: {
+            label.isHidden = isValid
+            label.textColor = .red
+            if (isValid) {
+                textField.textColor = .black
+            } else {
+                textField.textColor = .red
+            }
+        })
+    }
+    
+    func validate(_ textField: UITextField) -> Bool {
+        let text = textField.text
+        var (valid, message) : (Bool, String?) = (true, nil)
+        switch textField {
+        case listOfInstructions:
+            (valid, message) = self.viewModel!.validateText(type: .instruction, textToValidate: [text])
+            self.updateValidationLabel(listOfInstructionsValidation, textField:listOfInstructions, validationMessage: message, isValid: valid)
+        case listOfCrates:
+            (valid, message) = self.viewModel!.validateText(type: .crate, textToValidate: [text])
+            self.updateValidationLabel(listOfCratesValidation, textField:listOfCrates, validationMessage: message, isValid: valid)
+        case robotStartCoordinates_x, robotStartCoordinates_y:
+            (valid, message) = self.viewModel!.validateText(type: .coordinate, textToValidate: [robotStartCoordinates_x.text, robotStartCoordinates_y.text])
+            updateValidationLabel(robotStartCoordinatesValidation, textField:robotStartCoordinates_x, validationMessage: message, isValid: valid)
+            updateValidationLabel(robotStartCoordinatesValidation, textField:robotStartCoordinates_y, validationMessage: message, isValid: valid)
+        case beltCoordinates_x, beltCoordinates_y:
+            (valid, message) = self.viewModel!.validateText(type: .coordinate, textToValidate: [beltCoordinates_x.text, beltCoordinates_y.text])
+            self.updateValidationLabel(beltCoordinatesValidation, textField:beltCoordinates_x, validationMessage: message, isValid: valid)
+            self.updateValidationLabel(beltCoordinatesValidation, textField:beltCoordinates_y, validationMessage: message, isValid: valid)
+        default:
+            break
+        }
+        
+        return valid
+    }
+    
 }
