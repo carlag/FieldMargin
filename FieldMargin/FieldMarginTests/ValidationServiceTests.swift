@@ -7,3 +7,44 @@
 //
 
 import Foundation
+
+
+
+import XCTest
+@testable import FieldMargin
+
+class ValidationServiceTests: XCTestCase {
+    
+    let input = TestInput()
+    var validationService : ValidationService?
+    
+    override func setUp() {
+        super.setUp()
+        self.validationService = ValidationService()
+        // Put setup code here. This method is called before the invocation of each test method in the class.
+    }
+    
+    override func tearDown() {
+        super.tearDown()
+    }
+    
+    func testInvalidCrateString1() {
+        let (valid, _) = (self.validationService?.validateCrates(text: "()"))!
+        assert(!valid)
+    }
+    
+    func testInvalidCrateString2() {
+        let (valid, _) = (self.validationService?.validateCrates(text: "(123)"))!
+        assert(!valid)
+    }
+    
+    func testInvalidCrateString3() {
+        let (valid, _) = (self.validationService?.validateCrates(text: "(1,1)"))!
+        assert(!valid)
+    }
+    
+    func testInvalidCrateString4() {
+        let (valid, _) = (self.validationService?.validateCrates(text: "(1,2,3)"))!
+        assert(valid)
+    }
+}
