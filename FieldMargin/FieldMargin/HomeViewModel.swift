@@ -61,12 +61,22 @@ extension HomeViewModel {
             return (false, "This field cannot be empty.")
         }
         
-        let characterset = CharacterSet(charactersIn: "0123456789,()")
+        let characterset = CharacterSet(charactersIn: "-0123456789,()")
         if text!.rangeOfCharacter(from: characterset.inverted) != nil {
             return (false, "String contains unexpected characters")
         }
         
-        return (text!.characters.count > 0, "This field cannot be empty.")
+        let text = text!.trimmingCharacters(in: .whitespaces)
+        let cratesAsStrings = text.components(separatedBy: "),")
+        for var crateString in cratesAsStrings {
+            crateString = crateString.replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: "")
+            let crateParts = crateString.components(separatedBy: ",")
+            if (crateParts.count != 3) {
+                return (false, "Unexpected input")
+            }
+        }
+        
+        return (text.characters.count > 0, "This field cannot be empty.")
     }
     
     func validateInstructions(text: String?) -> (Bool, String?) {
@@ -102,6 +112,12 @@ extension HomeViewModel {
         return logViewModel
     }
 
+    func filterDisallowedLetters(allowedLetters: String, string: String) -> Bool{
+        let aSet = NSCharacterSet(charactersIn:allowedLetters).inverted
+        let compSepByCharInSet = string.components(separatedBy: aSet)
+        let filtered = compSepByCharInSet.joined(separator: "")
+        return string == filtered
+    }
 }
 
 //MARK: Formating input
