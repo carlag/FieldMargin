@@ -12,7 +12,6 @@ import UIKit
 typealias FinalState = (String, String, String)
 
 protocol RobotServiceProtocol {
-    init(robot: Robot, belt: Belt, crates: [Crate], instructions: [Instruction])
     mutating func startRobot() -> FinalState
 }
 
@@ -24,14 +23,8 @@ struct RobotService : RobotServiceProtocol {
     var crates: [Crate] = []
     var commands : [Instruction] = []
     
-    init(robot: Robot, belt: Belt, crates: [Crate], instructions: [Instruction]) {
-        self.robot = robot
-        self.belt = belt
-        self.crates = crates
-        self.commands = instructions
-    }
-    
     mutating func startRobot() -> FinalState {
+        self.logger = []
         while (self.robot?.health != .ShortCircuited && self.commands.count > 0) {
             let nextCommand = self.commands.remove(at: 0)
             processCommand(command: nextCommand)

@@ -10,8 +10,7 @@
 		2123BE241F4310BB003E5C7B /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2123BE231F4310BB003E5C7B /* HomeViewModel.swift */; };
 		2123BE271F4354CC003E5C7B /* RobotService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2123BE261F4354CC003E5C7B /* RobotService.swift */; };
 		2150E65F1F42FCEB002EB03A /* IntrustionsHelpView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2150E65E1F42FCEB002EB03A /* IntrustionsHelpView.xib */; };
-		2150E6611F42FE81002EB03A /* ResultsPopupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2150E6601F42FE81002EB03A /* ResultsPopupViewModel.swift */; };
-		2150E6641F42FF10002EB03A /* RobotLogView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2150E6631F42FF10002EB03A /* RobotLogView.xib */; };
+		2150E6611F42FE81002EB03A /* LogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2150E6601F42FE81002EB03A /* LogViewModel.swift */; };
 		219031A61F4074F800E10632 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219031A51F4074F800E10632 /* AppDelegate.swift */; };
 		219031A81F4074F800E10632 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219031A71F4074F800E10632 /* ViewController.swift */; };
 		219031AB1F4074F800E10632 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 219031A91F4074F800E10632 /* Main.storyboard */; };
@@ -23,6 +22,9 @@
 		219031CB1F40761C00E10632 /* Robot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219031CA1F40761C00E10632 /* Robot.swift */; };
 		219031CD1F40764800E10632 /* Belt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219031CC1F40764800E10632 /* Belt.swift */; };
 		219031CF1F40775200E10632 /* Instruction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219031CE1F40775200E10632 /* Instruction.swift */; };
+		21D4D3F01F4390C80056CB81 /* LoggerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D4D3EF1F4390C80056CB81 /* LoggerViewController.swift */; };
+		21D4D3F21F4390DA0056CB81 /* LoggerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21D4D3F11F4390DA0056CB81 /* LoggerViewController.xib */; };
+		21D4D3F41F4391DF0056CB81 /* LoggerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21D4D3F31F4391DF0056CB81 /* LoggerViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,8 +41,7 @@
 		2123BE231F4310BB003E5C7B /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		2123BE261F4354CC003E5C7B /* RobotService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RobotService.swift; sourceTree = "<group>"; };
 		2150E65E1F42FCEB002EB03A /* IntrustionsHelpView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IntrustionsHelpView.xib; sourceTree = "<group>"; };
-		2150E6601F42FE81002EB03A /* ResultsPopupViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsPopupViewModel.swift; sourceTree = "<group>"; };
-		2150E6631F42FF10002EB03A /* RobotLogView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RobotLogView.xib; sourceTree = "<group>"; };
+		2150E6601F42FE81002EB03A /* LogViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogViewModel.swift; sourceTree = "<group>"; };
 		219031A21F4074F800E10632 /* FieldMargin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FieldMargin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		219031A51F4074F800E10632 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		219031A71F4074F800E10632 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +57,9 @@
 		219031CA1F40761C00E10632 /* Robot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Robot.swift; sourceTree = "<group>"; };
 		219031CC1F40764800E10632 /* Belt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Belt.swift; sourceTree = "<group>"; };
 		219031CE1F40775200E10632 /* Instruction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Instruction.swift; sourceTree = "<group>"; };
+		21D4D3EF1F4390C80056CB81 /* LoggerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggerViewController.swift; sourceTree = "<group>"; };
+		21D4D3F11F4390DA0056CB81 /* LoggerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoggerViewController.xib; sourceTree = "<group>"; };
+		21D4D3F31F4391DF0056CB81 /* LoggerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoggerViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				219031A71F4074F800E10632 /* ViewController.swift */,
+				21D4D3EF1F4390C80056CB81 /* LoggerViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -95,6 +100,7 @@
 		219031991F4074F800E10632 = {
 			isa = PBXGroup;
 			children = (
+				21D4D3F11F4390DA0056CB81 /* LoggerViewController.xib */,
 				219031A41F4074F800E10632 /* FieldMargin */,
 				219031B91F4074F800E10632 /* FieldMarginTests */,
 				219031A31F4074F800E10632 /* Products */,
@@ -152,7 +158,7 @@
 			children = (
 				2150E6621F42FEA9002EB03A /* Controllers */,
 				2150E65E1F42FCEB002EB03A /* IntrustionsHelpView.xib */,
-				2150E6631F42FF10002EB03A /* RobotLogView.xib */,
+				21D4D3F31F4391DF0056CB81 /* LoggerViewController.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -160,7 +166,7 @@
 		219031D51F407B5800E10632 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				2150E6601F42FE81002EB03A /* ResultsPopupViewModel.swift */,
+				2150E6601F42FE81002EB03A /* LogViewModel.swift */,
 				2123BE231F4310BB003E5C7B /* HomeViewModel.swift */,
 			);
 			name = ViewModel;
@@ -250,9 +256,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21D4D3F21F4390DA0056CB81 /* LoggerViewController.xib in Resources */,
 				219031B01F4074F800E10632 /* LaunchScreen.storyboard in Resources */,
+				21D4D3F41F4391DF0056CB81 /* LoggerViewController.xib in Resources */,
 				2150E65F1F42FCEB002EB03A /* IntrustionsHelpView.xib in Resources */,
-				2150E6641F42FF10002EB03A /* RobotLogView.xib in Resources */,
 				219031AD1F4074F800E10632 /* Assets.xcassets in Resources */,
 				219031AB1F4074F800E10632 /* Main.storyboard in Resources */,
 			);
@@ -274,10 +281,11 @@
 			files = (
 				219031CF1F40775200E10632 /* Instruction.swift in Sources */,
 				2123BE271F4354CC003E5C7B /* RobotService.swift in Sources */,
+				21D4D3F01F4390C80056CB81 /* LoggerViewController.swift in Sources */,
 				219031A81F4074F800E10632 /* ViewController.swift in Sources */,
 				219031CD1F40764800E10632 /* Belt.swift in Sources */,
 				2123BE241F4310BB003E5C7B /* HomeViewModel.swift in Sources */,
-				2150E6611F42FE81002EB03A /* ResultsPopupViewModel.swift in Sources */,
+				2150E6611F42FE81002EB03A /* LogViewModel.swift in Sources */,
 				219031CB1F40761C00E10632 /* Robot.swift in Sources */,
 				219031C81F4075E700E10632 /* Crate.swift in Sources */,
 				219031A61F4074F800E10632 /* AppDelegate.swift in Sources */,

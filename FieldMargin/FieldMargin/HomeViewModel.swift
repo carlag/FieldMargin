@@ -17,6 +17,7 @@ protocol HomeViewModelProtocol {
 
 struct HomeViewModel : HomeViewModelProtocol {
 
+    var robotService : RobotService?
     
     var reload : (()->())?
     
@@ -27,11 +28,11 @@ struct HomeViewModel : HomeViewModelProtocol {
     
     init(reloadCallback: @escaping (()->())) {
         self.reload = reloadCallback
+        self.robotService = RobotService()
     }
     
     
     mutating func processFormData(robotCoord_x: String, robotCoord_y: String, beltCoord_x: String, beltCoord_y: String, crates: String, instructions: String)
-
     {
         let robot = Robot(position: CGPoint(x: Int(robotCoord_x)!, y: Int(robotCoord_y)!))
         let belt = Belt(position: CGPoint(x: Int(robotCoord_x)!, y: Int(robotCoord_y)!))
@@ -39,8 +40,12 @@ struct HomeViewModel : HomeViewModelProtocol {
         let crateList = makeCrates(input: crates)
         let instructionsList = makeInstructions(input: instructions)
 
-        var robotService = RobotService(robot: robot, belt: belt, crates: crateList, instructions: instructionsList)
-        let finalState = robotService.startRobot()
+        self.robotService?.robot = robot
+        self.robotService?.belt = belt
+        self.robotService?.crates = crateList
+        self.robotService?.commands = instructionsList
+        
+        let finalState = self.robotService?.startRobot()
         self.finalState = finalState
         
         self.reload!()
@@ -52,8 +57,8 @@ extension HomeViewModel {
 
     func validateCrates(text: String?) -> (Bool, String?) {
         
-        guard text != nil else {
-            return (false, nil)
+        guard text != nil && text != "" else {
+            return (false, "This field cannot be empty.")
         }
         
         let characterset = CharacterSet(charactersIn: "0123456789,()")
@@ -66,8 +71,8 @@ extension HomeViewModel {
     
     func validateInstructions(text: String?) -> (Bool, String?) {
         
-        guard text != nil else {
-            return (false, nil)
+        guard text != nil && text != "" else {
+            return (false, "This field cannot be empty.")
         }
         
         let characterset = CharacterSet(charactersIn: "PDNSEW ")
@@ -80,8 +85,8 @@ extension HomeViewModel {
     
     func validateCoordinates(text_x: String?, text_y: String?) -> (Bool, String?) {
         
-        guard text_x != nil && text_y != nil else {
-            return (false, nil)
+        guard text_x != nil && text_x != "" && text_y != "" && text_y != nil else {
+            return (false, "This field cannot be empty.")
         }
         
         let chars_x : Int = text_x!.characters.count
@@ -89,8 +94,13 @@ extension HomeViewModel {
         
         let (valid, message) = (chars_x > 0 && chars_y > 0, "This field cannot be empty.")
         
-        
-        return  (valid, message)   }
+        return  (valid, message)
+    }
+    
+    func nextViewModel() -> LogViewModel {
+        let logViewModel = LogViewModel(logger: self.robotService!.logger)
+        return logViewModel
+    }
 
 }
 
