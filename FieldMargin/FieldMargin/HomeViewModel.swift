@@ -11,13 +11,14 @@ import UIKit
 
 protocol HomeViewModelProtocol {
     mutating func processFormData(robotCoord_x: String, robotCoord_y: String, beltCoord_x: String, beltCoord_y: String, crates: String, instructions: String)
-    func validateInstructions(text: String?) -> (Bool, String?)
-    func validateCrates(text: String?) -> (Bool, String?)
+    func validateText(type: ValidationType, textToValidate: [String?]) -> (Bool, String?)
+    func stringContainsAllowedLetters(type: ValidationType, string: String) -> Bool
 }
 
 struct HomeViewModel : HomeViewModelProtocol {
 
     var robotService : RobotService?
+    var validationService : ValidationService?
     
     var reload : (()->())?
     
@@ -29,6 +30,7 @@ struct HomeViewModel : HomeViewModelProtocol {
     init(reloadCallback: @escaping (()->())) {
         self.reload = reloadCallback
         self.robotService = RobotService()
+        self.validationService = ValidationService()
     }
     
     
@@ -50,75 +52,26 @@ struct HomeViewModel : HomeViewModelProtocol {
         
         self.reload!()
     }
-}
-
-//MARK: Validation
-extension HomeViewModel {
-
-    func validateCrates(text: String?) -> (Bool, String?) {
-        
-        guard text != nil && text != "" else {
-            return (false, "This field cannot be empty.")
-        }
-        
-        let characterset = CharacterSet(charactersIn: "-0123456789,() ")
-        if text!.rangeOfCharacter(from: characterset.inverted) != nil {
-            return (false, "String contains unexpected characters")
-        }
-        
-        let text = text!.trimmingCharacters(in: .whitespaces)
-        let cratesAsStrings = text.components(separatedBy: "),")
-        for var crateString in cratesAsStrings {
-            crateString = crateString.replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: "")
-            let crateParts = crateString.components(separatedBy: ",")
-            if (crateParts.count != 3 || crateParts[0] == "" || crateParts[1] == "" || crateParts[2] == "") {
-                return (false, "Unexpected input")
-            }
-        }
-        
-        return (text.characters.count > 0, "This field cannot be empty.")
-    }
     
-    func validateInstructions(text: String?) -> (Bool, String?) {
-        
-        guard text != nil && text != "" else {
-            return (false, "This field cannot be empty.")
-        }
-        
-        let characterset = CharacterSet(charactersIn: "PDNSEW ")
-        if text!.rangeOfCharacter(from: characterset.inverted) != nil {
-            return (false, "String contains unexpected characters")
-        }
-        
-        return (text!.characters.count > 0, "This field cannot be empty.")
-    }
-    
-    func validateCoordinates(text_x: String?, text_y: String?) -> (Bool, String?) {
-        
-        guard text_x != nil && text_x != "" && text_y != "" && text_y != nil else {
-            return (false, "This field cannot be empty.")
-        }
-        
-        let chars_x : Int = text_x!.characters.count
-        let chars_y : Int = text_y!.characters.count
-        
-        let (valid, message) = (chars_x > 0 && chars_y > 0, "This field cannot be empty.")
-        
-        return  (valid, message)
-    }
     
     func nextViewModel() -> LogViewModel {
         let logViewModel = LogViewModel(logger: self.robotService!.logger)
         return logViewModel
     }
-
-    func filterDisallowedLetters(allowedLetters: String, string: String) -> Bool{
-        let aSet = NSCharacterSet(charactersIn:allowedLetters).inverted
-        let compSepByCharInSet = string.components(separatedBy: aSet)
-        let filtered = compSepByCharInSet.joined(separator: "")
-        return string == filtered
+    
+    func validateText(type: ValidationType, textToValidate: [String?]) -> (Bool, String?) {
+        guard self.validationService != nil else {return (true, nil)}
+        
+        return self.validationService!.validateText(type: type, textToValidate: textToValidate)
+    }
+    
+    func stringContainsAllowedLetters(type: ValidationType, string: String) -> Bool {
+        guard self.validationService != nil else {return (false)}
+        
+        return self.validationService!.stringContainsAllowedLetters(type: type, string: string)
     }
 }
+
 
 //MARK: Formating input
 extension HomeViewModel {

@@ -31,10 +31,6 @@ class ViewController: UIViewController {
         setupView()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     // MARK: - View Methods
     fileprivate func setupView() {
@@ -67,10 +63,6 @@ class ViewController: UIViewController {
 extension ViewController {
     @IBAction func viewLogButtonTapped(_ sender: Any) {
         self.showModal()
-    }
-    
-    @IBAction func intrustructionsHelpButtonHelped(_ sender: Any) {
-        
     }
     
     @IBAction func submitButtonTapped(_ sender: Any) {
@@ -117,11 +109,11 @@ extension ViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         switch textField {
         case beltCoordinates_x, beltCoordinates_y, robotStartCoordinates_x, robotStartCoordinates_y:
-            return self.viewModel!.filterDisallowedLetters(allowedLetters: "-0123456789", string: string)
+            return self.viewModel!.stringContainsAllowedLetters(type: .coordinate, string: string)
         case listOfCrates:
-            return self.viewModel!.filterDisallowedLetters(allowedLetters: "-0123456789(), ", string: string)
+            return self.viewModel!.stringContainsAllowedLetters(type: .crate, string: string)
         case listOfInstructions:
-            return self.viewModel!.filterDisallowedLetters(allowedLetters: "PDNSEW", string: string)
+            return self.viewModel!.stringContainsAllowedLetters(type: .instruction, string:string)
         default:
             beltCoordinates_x.resignFirstResponder()
         }
@@ -157,16 +149,16 @@ extension ViewController: UITextFieldDelegate {
         var (valid, message) : (Bool, String?) = (true, nil)
         switch textField {
         case listOfInstructions:
-            (valid, message) = self.viewModel!.validateInstructions(text: text!)
+            (valid, message) = self.viewModel!.validateText(type: .instruction, textToValidate: [text])
             self.updateValidationLabel(listOfInstructionsValidation, text: message, isHidden: valid)
         case listOfCrates:
-            (valid, message) = self.viewModel!.validateCrates(text: text!)
+            (valid, message) = self.viewModel!.validateText(type: .crate, textToValidate: [text])
             self.updateValidationLabel(listOfCratesValidation, text: message, isHidden: valid)
         case robotStartCoordinates_x, robotStartCoordinates_y:
-            (valid, message) = self.viewModel!.validateCoordinates(text_x: robotStartCoordinates_x.text, text_y: robotStartCoordinates_y.text)
+            (valid, message) = self.viewModel!.validateText(type: .coordinate, textToValidate: [robotStartCoordinates_x.text, robotStartCoordinates_y.text])
             updateValidationLabel(robotStartCoordinatesValidation, text: message, isHidden: valid)
         case beltCoordinates_x, beltCoordinates_y:
-            (valid, message) = self.viewModel!.validateCoordinates(text_x: beltCoordinates_x.text, text_y: beltCoordinates_y.text)
+            (valid, message) = self.viewModel!.validateText(type: .coordinate, textToValidate: [beltCoordinates_x.text, beltCoordinates_y.text])
             self.updateValidationLabel(beltCoordinatesValidation, text: message, isHidden: valid)
         default:
             break

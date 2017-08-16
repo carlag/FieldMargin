@@ -9,10 +9,10 @@
 import XCTest
 @testable import FieldMargin
 
-class FieldMarginTests: XCTestCase {
+class RobotServiceTests: XCTestCase {
     
     let input = TestInput()
-    var viewModel : ResultsPopupViewModel?
+    var viewModel : RobotService?
     
     override func setUp() {
         super.setUp()
@@ -36,7 +36,7 @@ class FieldMarginTests: XCTestCase {
     }
     
     func testMoveCommands() {
-        self.viewModel = ResultsPopupViewModel(robot: TestInput.AllGood().robot, belt: TestInput.AllGood().belt, crates: TestInput.AllGood().crates, instructions: TestInput.AllGood().instructions)
+        self.viewModel = RobotService(robot: TestInput.AllGood().robot, belt: TestInput.AllGood().belt, crates: TestInput.AllGood().crates, instructions: TestInput.AllGood().instructions)
         self.viewModel?.startRobot()
         
         let health = self.viewModel?.robot?.health
@@ -50,7 +50,7 @@ class FieldMarginTests: XCTestCase {
     
     
     func testRobotDropsBagAtPositionOtherThanBelt() {
-        viewModel = ResultsPopupViewModel(robot: Robot(position:CGPoint(x:0, y:0)),
+        viewModel = RobotService(robot: Robot(position:CGPoint(x:0, y:0)),
                                           belt: Belt(position: CGPoint(x:1, y:1)),
                                           crates: [Crate(position:CGPoint(x:0, y:0), quantity: 2)],
                                           instructions: [.D])
@@ -64,7 +64,7 @@ class FieldMarginTests: XCTestCase {
     
     
     func testNoCrateAtPosition() {
-        viewModel = ResultsPopupViewModel(robot: Robot(position:CGPoint(x:0, y:0)),
+        viewModel = RobotService(robot: Robot(position:CGPoint(x:0, y:0)),
                                           belt: Belt(position: CGPoint(x:1, y:0)),
                                           crates: [Crate(position:CGPoint(x:1,y:1), quantity: 0)],
                                           instructions: [.P])
@@ -76,7 +76,7 @@ class FieldMarginTests: XCTestCase {
     }
     
     func testEmptyCrates() {
-        viewModel = ResultsPopupViewModel(robot: Robot(position:CGPoint(x:0, y:0)),
+        viewModel = RobotService(robot: Robot(position:CGPoint(x:0, y:0)),
                                           belt: Belt(position: CGPoint(x:1, y:0)),
                                           crates: [Crate(position:CGPoint(x:0,y:0), quantity: 0)],
                                           instructions: [.P, .E, .D])
@@ -88,7 +88,7 @@ class FieldMarginTests: XCTestCase {
     }
     
     func testRobotHasNoBagsToDrop() {
-        viewModel = ResultsPopupViewModel(robot: TestInput.RobotHasNoBagsToDrop().robot, belt: TestInput.RobotHasNoBagsToDrop().belt, crates: [], instructions: TestInput.RobotHasNoBagsToDrop().instructions)
+        viewModel = RobotService(robot: TestInput.RobotHasNoBagsToDrop().robot, belt: TestInput.RobotHasNoBagsToDrop().belt, crates: [], instructions: TestInput.RobotHasNoBagsToDrop().instructions)
         self.viewModel?.startRobot()
         
         let health = self.viewModel?.robot?.health

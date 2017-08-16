@@ -24,17 +24,7 @@ struct RobotService : RobotServiceProtocol {
     var commands : [Instruction] = []
     
     mutating func startRobot() -> FinalState {
-        self.logger = []
-        logger.append("-----Setup-----")
-        
-        logger.append("Robot start: \(self.robot!.position)")
-        logger.append("Belt start: \(self.belt!.position)")
-        for crate in crates {
-            logger.append("\(crate)")
-        }
-        logger.append(" ")
-        
-        logger.append("-----Robot started-----")
+        self.setupLogger()
         while (self.robot?.health != .ShortCircuited && self.commands.count > 0) {
             let nextCommand = self.commands.remove(at: 0)
             processCommand(command: nextCommand)
@@ -134,5 +124,18 @@ struct RobotService : RobotServiceProtocol {
         let pos : CGPoint = CGPoint(x: x_pos, y: y_pos)
         logger.append("New position: \(pos)")
         robot!.position = pos
+    }
+    
+   mutating func setupLogger() {
+        self.logger = []
+        logger.append("-----Setup-----")
+        logger.append("Robot start: \(self.robot!.position)")
+        logger.append("Belt start: \(self.belt!.position)")
+        for crate in crates {
+            logger.append("\(crate)")
+        }
+        logger.append(" ")
+        logger.append("-----Robot started-----")
+
     }
 }
